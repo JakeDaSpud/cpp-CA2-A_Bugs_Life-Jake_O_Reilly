@@ -1,0 +1,1 @@
+enum class direction {NORTH, EAST, SOUTH, WEST};
