@@ -5,6 +5,8 @@
 #include <list>
 #include <utility>
 #include "Direction.cpp"
+#include <string>
+#include "conversion_utils.h"
 
 class Bug {
 protected:
@@ -15,6 +17,7 @@ protected:
     int size; // Initially 1-20: if two Bugs fight, one with bigger size wins, and other dies, that dead Bug's size gets added to the winner's
     std::list<std::pair<int, int>> path; // List of position history
 
+    virtual std::string asString() = 0;
     virtual void move() = 0; // Pure virtual function with "= 0", this means Bug class cannot be instantiated
     bool isWayBlocked() { return false; };
 
@@ -32,6 +35,8 @@ public:
     const std::list<std::pair<int, int>> &getPath() const;
     void setPath(const std::list<std::pair<int, int>> &path);
 
+    virtual ~Bug();
+    // virtual so the child Bugs must make their own
 
 };
 

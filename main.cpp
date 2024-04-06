@@ -31,13 +31,15 @@ int main() {
                 std::cout << "Selected [1] Initialise Board..." << std::endl;
                 populateBugsFromFile(bugPtrVector, "inputBugs.txt");
 
+
+
                 break;
 
             default:
                 std::cout << "Error: Menu option not recognised." << std::endl;
                 break;
         }
-    } while (trystoi(userInput) != 8);
+    } while (conversion_utils::trystoi(userInput) != 8);
 
     return 0;
 }
@@ -68,31 +70,66 @@ void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName) {
         // Loop through while file has next
         while (std::getline(inputBugFile, bugFileLine)) {
             std::cout << bugFileLine << std::endl;
+
+            // Adapted using Martin York's SO answer:
+            // - https://stackoverflow.com/questions/3910326/c-read-file-line-by-line-then-split-each-line-using-the-delimiter
+
+            std::stringstream linestream(bugFileLine);
+            std::string data;
+
+            // Going through current line of file, delim by delim
+            while (std::getline(linestream, data, ';')) {
+                char bugType;
+                int bugId, bugX, bugY, bugSize, bugHopLength, bugInterval;
+                std::string bugDir;
+                linestream >> bugType;
+
+                std::cout << "bugType: " << bugType << std::endl;
+
+                if (bugType == 'C') {
+                    linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize;
+
+                    // Instantiate Crawler
+                    Crawler *newCrawler = new Crawler(bugId, std::pair<int, int>(bugX, bugY), conversion_utils::stodir(bugDir), bugSize);
+                    std::cout << "newCrawler made: " << newCrawler->asString() << std::endl;
+
+                    // Add ptr to vector
+                    bugVector.push_back(newCrawler);
+                }
+
+                else if (bugType == 'H') {
+                    linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize >> bugHopLength;
+
+                    // Instantiate Hopper
+                    Hopper *newHopper = new Hopper(bugId, std::pair<int, int>(bugX, bugY), conversion_utils::stodir(bugDir), bugSize, bugHopLength);
+                    //std::cout << "newHopper made: " << bugId << bugX << bugY << bugDir << bugSize << bugHopLength << std::endl;
+                    std::cout << newHopper->asString();
+
+                    // Add ptr to vector
+                    bugVector.push_back();
+                }
+
+                /* Custom Bug
+                else if (.at(0) == 'I') {
+                    // Instantiate Indecisus
+
+                    // Add ptr to vector
+                }
+                 */
+            }
         }
 
         // Close file after reading
         inputBugFile.close();
+
+        //DEBUG print out all bugs ////////////////////////////////////////////// i was here checkpoint ! ! !!!
+        for (auto item: bugVector) {
+            item->asString();
+        }
     }
 
     // Error, can't find input file
     else {
         std::cout << "Error: Can't read input file." << std::endl;
-    }
-}
-
-int trystoi(const std::string &stoiString) {
-
-    try {
-        // If stoi works, it will return an int from the string
-        return stoi(stoiString);
-    }
-
-    // exception / error gets put into &e, it is when stoi doesn't work and there's no int in the string
-    catch (const std::invalid_argument &e) {
-        std::cerr << "std::invalid_argument error from: " << e.what() << std::endl;
-        std::cout << "Returning to menu...\n" << std::endl;
-
-        // Return -1 when there's no int in the string input, this means the main menu will continue the loop!
-        return -1;
     }
 }

@@ -8,3 +8,29 @@ void Hopper::move() {
     // If can't move full hopLength, moves to edge of board, then choose random direction
     // Add new position to position history
 }
+
+int Hopper::getHopLength() const {
+    return hopLength;
+}
+
+void Hopper::setHopLength(int hopLength) {
+    Hopper::hopLength = hopLength;
+}
+
+std::string Hopper::asString() {
+    std::string out = "";
+
+    //int id, std::pair<int, int> position, direction direction, int size, int hopLength
+    //out += "Hopper: id[] position[x: , y:] dir[] size[]";
+    out += "Hopper: id[" + std::to_string(this->getId()) + "] ";
+    out += "position[x: " + std::to_string(this->getPosition().first) + ", y: " + std::to_string(this->getPosition().second) + "] ";
+    out += "dir[" + conversion_utils::dirtos(this->facingDirection) + "] "; //using dirtos()
+    out += "size[" + std::to_string(this->getSize()) + "] ";
+    out += "hopLength[" + std::to_string(this->getHopLength()) + "]";
+
+    return out;
+}
+
+Hopper::~Hopper() {
+
+}

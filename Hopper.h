@@ -13,7 +13,7 @@ private:
     int hopLength;
 
 protected:
-    void move() override;
+    virtual void move() override;
 
 public:
     // Constructor
@@ -29,7 +29,13 @@ public:
         // example spawn code: H;102;9;0;NORTH;8;2
     };
 
-};
+    virtual std::string asString() override;
 
+    int getHopLength() const;
+    void setHopLength(int hopLength);
+
+    //Destructor
+    ~Hopper() override;
+};
 
 #endif //A_BUGS_LIFE_JAKE_O_REILLY_CA2_HOPPER_H

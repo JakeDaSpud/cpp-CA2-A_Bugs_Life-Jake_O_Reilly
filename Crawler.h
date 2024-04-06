@@ -25,6 +25,11 @@ public:
         // example spawn code: C;101;0;0;WEST;10
     };
 
+    virtual std::string asString() override;
+
+    //Destructor
+    ~Crawler() override;
+
 };
 
 #endif //A_BUGS_LIFE_JAKE_O_REILLY_CA2_CRAWLER_H
