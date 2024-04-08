@@ -105,8 +105,10 @@ void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName) {
                     //std::cout << "newHopper made: " << bugId << bugX << bugY << bugDir << bugSize << bugHopLength << std::endl;
                     std::cout << newHopper->asString();
 
+                    Bug *newHopperPtr = dynamic_cast<Bug*>(newHopper);
+
                     // Add ptr to vector
-                    bugVector.push_back();
+                    bugVector.push_back(newHopperPtr);
                 }
 
                 /* Custom Bug

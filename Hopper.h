@@ -9,33 +9,33 @@
 // Public inheritance keeps protected fields protected
 class Hopper: public Bug {
 
-private:
-    int hopLength;
-
 protected:
-    virtual void move() override;
+
+    int hopLength;
+    virtual void move();
 
 public:
-    // Constructor
-    Hopper(int id, std::pair<int, int> position, direction direction, int size, int hopLength) {
-        this->id = id;
+    // Constructor: Hopper() initialises a Hopper obj with full @params
+    Hopper(int id, std::pair<int, int> position, direction direction, int size, int hopLength): Bug(id, position, direction, size), hopLength(hopLength) {
+    // This part of the constructor is like super() for Bug's @params, then using the new hopLength to make it Hopper
+        /*this->id = id;
         this->position = position;
         Bug::setFacingDirection(direction);
-        this->size = size;
+        this->size = size;*/
         this->hopLength = hopLength;
 
-        this->isAlive = true;
-        this->path = {this->position}; // Sets first move in history to be spawn position
+        /*this->isAlive = true;
+        this->path = {this->position};*/ // Sets first move in history to be spawn position
         // example spawn code: H;102;9;0;NORTH;8;2
     };
 
-    virtual std::string asString() override;
+    virtual std::string asString();
 
     int getHopLength() const;
     void setHopLength(int hopLength);
 
     //Destructor
-    ~Hopper() override;
+    ~Hopper();
 };
 
 #endif //A_BUGS_LIFE_JAKE_O_REILLY_CA2_HOPPER_H

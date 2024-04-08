@@ -17,12 +17,30 @@ protected:
     int size; // Initially 1-20: if two Bugs fight, one with bigger size wins, and other dies, that dead Bug's size gets added to the winner's
     std::list<std::pair<int, int>> path; // List of position history
 
-    virtual std::string asString() = 0;
     virtual void move() = 0; // Pure virtual function with "= 0", this means Bug class cannot be instantiated
     bool isWayBlocked() { return false; };
 
 public:
+    /*Bug(int id, const std::pair<int, int> &position, direction facingDirection, int size) {
+        this->id = id;
+        this->position = position;
+        this->facingDirection = facingDirection;
+        this->isAlive = true; // Not in @param
+        this->size = size;
+
+        path.push_back(position); // Adds initial position (@param &position) to history
+    }*/
+
+    Bug(int id, const std::pair<int, int> &position, direction facingDirection, int size)
+    : id(id), position(position), facingDirection(facingDirection), size(size) {
+        this->isAlive = true; // Not in @param
+        this->path.push_back(position); // Adds initial position (@param &position) to history
+    }
+
     int getId() const;
+
+    //Bug(int id, const std::pair<int, int> &position, direction facingDirection, int size);
+
     void setId(int id);
     const std::pair<int, int> &getPosition() const;
     void setPosition(const std::pair<int, int> &position);
@@ -35,7 +53,11 @@ public:
     const std::list<std::pair<int, int>> &getPath() const;
     void setPath(const std::list<std::pair<int, int>> &path);
 
-    virtual ~Bug();
+    //make empty path
+
+    virtual std::string asString() = 0; // Pure virtual
+
+    //virtual ~Bug();
     // virtual so the child Bugs must make their own
 
 };

@@ -10,11 +10,11 @@
 class Crawler: public Bug {
 
 protected:
-    void move() override;
+    virtual void move();
 
 public:
     // Constructor
-    Crawler(int id, std::pair<int, int> position, direction direction, int size) {
+    Crawler(int id, std::pair<int, int> position, direction direction, int size): Bug(id, position, direction, size) {
         this->id = id;
         this->position = position;
         Bug::setFacingDirection(direction);
@@ -25,10 +25,10 @@ public:
         // example spawn code: C;101;0;0;WEST;10
     };
 
-    virtual std::string asString() override;
+    virtual std::string asString();
 
     //Destructor
-    ~Crawler() override;
+    ~Crawler();
 
 };
 
