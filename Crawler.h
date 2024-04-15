@@ -7,7 +7,7 @@
 #include <utility>
 
 // Public inheritance keeps protected fields protected
-class Crawler: public Bug {
+class Crawler : public Bug {
 
 protected:
     virtual void move();
@@ -15,10 +15,6 @@ protected:
 public:
     // Constructor
     Crawler(int id, std::pair<int, int> position, direction direction, int size): Bug(id, position, direction, size) {
-        this->id = id;
-        this->position = position;
-        Bug::setFacingDirection(direction);
-        this->size = size;
 
         this->isAlive = true;
         this->path = {this->position}; // Sets first move in history to be spawn position

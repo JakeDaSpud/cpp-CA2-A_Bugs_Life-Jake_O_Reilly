@@ -68,6 +68,7 @@ void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName) {
         std::cout << "DEBUG: Reading bug file" << std::endl;
 
         // Loop through while file has next
+        // This is the full bug line being read
         while (std::getline(inputBugFile, bugFileLine)) {
             std::cout << bugFileLine << std::endl;
 
@@ -78,19 +79,27 @@ void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName) {
             std::string data;
 
             // Going through current line of file, delim by delim
+            // This delim will grab the next ; item
             while (std::getline(linestream, data, ';')) {
                 char bugType;
-                int bugId, bugX, bugY, bugSize, bugHopLength, bugInterval;
-                std::string bugDir;
-                linestream >> bugType;
+                //int bugId;
+                std::string bugId, bugX, bugY, bugDir, bugSize, bugHopLength, bugInterval;
+
+                // Converting data's C or H string to a char
+                bugType = data.at(0);
 
                 std::cout << "bugType: " << bugType << std::endl;
 
                 if (bugType == 'C') {
-                    linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize;
+                    /*linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize*/;
+                    std::getline(linestream, bugId, ';');
+                    std::getline(linestream, bugX, ';');
+                    std::getline(linestream, bugY, ';');
+                    std::getline(linestream, bugDir, ';');
+                    std::getline(linestream, bugSize, ';');
 
                     // Instantiate Crawler
-                    Crawler *newCrawler = new Crawler(bugId, std::pair<int, int>(bugX, bugY), conversion_utils::stodir(bugDir), bugSize);
+                    Crawler *newCrawler = new Crawler(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize));
                     std::cout << "newCrawler made: " << newCrawler->asString() << std::endl;
 
                     // Add ptr to vector
@@ -98,17 +107,20 @@ void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName) {
                 }
 
                 else if (bugType == 'H') {
-                    linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize >> bugHopLength;
+
+                    std::getline(linestream, bugId, ';');
+                    std::getline(linestream, bugX, ';');
+                    std::getline(linestream, bugY, ';');
+                    std::getline(linestream, bugDir, ';');
+                    std::getline(linestream, bugSize, ';');
+                    std::getline(linestream, bugHopLength, ';');
 
                     // Instantiate Hopper
-                    Hopper *newHopper = new Hopper(bugId, std::pair<int, int>(bugX, bugY), conversion_utils::stodir(bugDir), bugSize, bugHopLength);
-                    //std::cout << "newHopper made: " << bugId << bugX << bugY << bugDir << bugSize << bugHopLength << std::endl;
-                    std::cout << newHopper->asString();
-
-                    Bug *newHopperPtr = dynamic_cast<Bug*>(newHopper);
+                    Hopper *newHopper = new Hopper(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize), std::stoi(bugHopLength));
+                    std::cout << "newHopper made: " << newHopper->asString() << std::endl;
 
                     // Add ptr to vector
-                    bugVector.push_back(newHopperPtr);
+                    bugVector.push_back(newHopper);
                 }
 
                 /* Custom Bug
@@ -125,9 +137,12 @@ void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName) {
         inputBugFile.close();
 
         //DEBUG print out all bugs ////////////////////////////////////////////// i was here checkpoint ! ! !!!
-        for (auto item: bugVector) {
+        /*for (auto item: bugVector) {
             item->asString();
-        }
+        }*/
+
+        // For formatting purposes, don't want the outputs touching!
+        std::cout << std::endl;
     }
 
     // Error, can't find input file

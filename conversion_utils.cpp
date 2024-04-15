@@ -33,4 +33,5 @@ std::string conversion_utils::dirtos(const direction &dirIn) {
     else if (dirIn == direction::EAST) {return "EAST";}
     else if (dirIn == direction::SOUTH) {return "SOUTH";}
     else if (dirIn == direction::WEST) {return "WEST";}
+    return "";
 }

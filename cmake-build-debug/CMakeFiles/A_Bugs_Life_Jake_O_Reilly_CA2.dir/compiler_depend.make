@@ -152,9 +152,7 @@ CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Bug.cpp.obj: C:/Users/jaked/CLionPr
   C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
   C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Bug.h \
-  C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Direction.cpp \
-  C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/conversion_utils.h
 
 CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Crawler.cpp.obj: C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.cpp \
@@ -310,7 +308,6 @@ CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Crawler.cpp.obj: C:/Users/jaked/CLi
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Bug.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Direction.cpp \
-  C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/conversion_utils.h
 
 CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Direction.cpp.obj: C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Direction.cpp
@@ -466,7 +463,6 @@ CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Hopper.cpp.obj: C:/Users/jaked/CLio
   C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
   C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Bug.h \
-  C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Direction.cpp \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/conversion_utils.h
@@ -622,9 +618,7 @@ CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/conversion_utils.cpp.obj: C:/Users/
   C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
   C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Bug.h \
-  C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Direction.cpp \
-  C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.h \
   C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/conversion_utils.h
 
 CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/main.cpp.obj: C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/main.cpp \
@@ -1111,15 +1105,15 @@ C:/Program\ Files/JetBrains/CLion\ 2023.3.2/bin/mingw/x86_64-w64-mingw32/include
 
 C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Bug.h:
 
-C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.h:
-
 C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Direction.cpp:
-
-C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.h:
 
 C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/conversion_utils.h:
 
+C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Crawler.h:
+
 C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.cpp:
+
+C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Hopper.h:
 
 C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/conversion_utils.cpp:
 
