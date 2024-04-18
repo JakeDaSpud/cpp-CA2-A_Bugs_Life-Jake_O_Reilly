@@ -128,6 +128,30 @@ A_Bugs_Life_Jake_O_Reilly_CA2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/build
 .PHONY : A_Bugs_Life_Jake_O_Reilly_CA2/fast
 
+Board.obj: Board.cpp.obj
+.PHONY : Board.obj
+
+# target to build an object file
+Board.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Board.cpp.obj
+.PHONY : Board.cpp.obj
+
+Board.i: Board.cpp.i
+.PHONY : Board.i
+
+# target to preprocess a source file
+Board.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Board.cpp.i
+.PHONY : Board.cpp.i
+
+Board.s: Board.cpp.s
+.PHONY : Board.s
+
+# target to generate assembly for a file
+Board.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Board.cpp.s
+.PHONY : Board.cpp.s
+
 Bug.obj: Bug.cpp.obj
 .PHONY : Bug.obj
 
@@ -281,6 +305,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... A_Bugs_Life_Jake_O_Reilly_CA2
+	@echo ... Board.obj
+	@echo ... Board.i
+	@echo ... Board.s
 	@echo ... Bug.obj
 	@echo ... Bug.i
 	@echo ... Bug.s

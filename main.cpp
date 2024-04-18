@@ -15,6 +15,7 @@ int main() {
     Crawler *c1Ptr = &c1;
     Hopper *h1Ptr = &h1;*/
 
+    Board bugBoard;
     std::vector<Bug*> bugPtrVector;
 
     for (auto &item : bugPtrVector) {
@@ -27,17 +28,26 @@ int main() {
         std::cin >> userInput;
 
         switch (userInput.at(0)) {
-            case '1':
+            case '1': {
                 std::cout << "Selected [1] Initialise Board..." << std::endl;
                 populateBugsFromFile(bugPtrVector, "inputBugs.txt");
-
-
-
                 break;
+            }
 
-            default:
+            case '2': {
+                bugBoard.display();
+                break;
+            }
+
+            case '4': {
+                bugBoard.tap();
+                break;
+            }
+
+            default: {
                 std::cout << "Error: Menu option not recognised." << std::endl;
                 break;
+            }
         }
     } while (conversion_utils::trystoi(userInput) != 8);
 

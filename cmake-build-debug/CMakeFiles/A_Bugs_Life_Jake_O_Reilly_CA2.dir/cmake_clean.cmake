@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "A_Bugs_Life_Jake_O_Reilly_CA2.exe"
   "A_Bugs_Life_Jake_O_Reilly_CA2.exe.manifest"
   "A_Bugs_Life_Jake_O_Reilly_CA2.pdb"
+  "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Board.cpp.obj"
+  "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Board.cpp.obj.d"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Bug.cpp.obj"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Bug.cpp.obj.d"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Crawler.cpp.obj"

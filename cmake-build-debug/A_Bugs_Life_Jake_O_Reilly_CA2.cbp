@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Board.cpp">
+			<Option target="A_Bugs_Life_Jake_O_Reilly_CA2"/>
+		</Unit>
+		<Unit filename="C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Board.h">
+			<Option target="A_Bugs_Life_Jake_O_Reilly_CA2"/>
+		</Unit>
 		<Unit filename="C:/Users/jaked/CLionProjects/A-Bugs-Life-Jake-O-Reilly-CA2/Bug.cpp">
 			<Option target="A_Bugs_Life_Jake_O_Reilly_CA2"/>
 		</Unit>

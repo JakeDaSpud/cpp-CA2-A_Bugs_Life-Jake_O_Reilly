@@ -13,4 +13,6 @@ add_executable(A_Bugs_Life_Jake_O_Reilly_CA2 main.cpp
         Direction.cpp
         main.h
         conversion_utils.cpp
-        conversion_utils.h)
+        conversion_utils.h
+        Board.cpp
+        Board.h)

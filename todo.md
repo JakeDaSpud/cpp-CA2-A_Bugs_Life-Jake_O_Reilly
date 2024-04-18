@@ -3,9 +3,9 @@
 ---
 
 ## To-do
-- [ ] Create Plan/Checklist for Project
-- [ ] Make Classes
-- [ ] Make Menu
+- [x] Create Plan/Checklist for Project
+- [x] Make Classes
+- [x] Make Menu
 - [ ] Implement all functions
 - [ ] Custom Controllable ```Bug```
 - [ ] New ```Bug``` type's ```move()``` uses int interval, where it moves 2 spaces instead of 1, every interval moves it makes
@@ -27,10 +27,10 @@
 
 ### Main
 
-- [ ] Look up Low Level Learning for how to use .h header files
-- [ ] Include .h header files (is that right? or do i include the .cpp files?) for ```Bug```, ```Crawler``` and ```Hopper```
-- [ ] Make bugs.txt: input file for all bugs to be instantiated (e.g. "```C;101;0;0;4;10``` ```H;102;9;0;1;8;2```")
-- [ ] Make Menu System
+- [x] Look up Low Level Learning for how to use .h header files
+- [x] Include .h header files (is that right? or do i include the .cpp files?) for ```Bug```, ```Crawler``` and ```Hopper```
+- [x] Make bugs.txt: input file for all bugs to be instantiated (e.g. "```C;101;0;0;4;10``` ```H;102;9;0;1;8;2```")
+- [x] Make Menu System
 - - [ ] Dummy items 1-8
 - - [ ] Menu 1: Initialise board (load ```Bug```s from ```bugs.txt```)
 - - [ ] Menu 2: Display all ```Bug```s
