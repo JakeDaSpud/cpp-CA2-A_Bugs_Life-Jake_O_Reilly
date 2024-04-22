@@ -195,7 +195,8 @@ std::string Board::getBugById(const int &searchId) {
 
     for (Bug* currentBug : this->allBugs) {
         if (currentBug->getId() == searchId) {
-            bugDataOut = currentBug->asString();
+            bugDataOut = "Found Bug [" + std::to_string(searchId) + "]: ";
+            bugDataOut += currentBug->asString();
             break;
         }
     }

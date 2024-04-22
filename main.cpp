@@ -64,12 +64,14 @@ int main() {
                 if (conversion_utils::trystoi(searchingBugId)) {
                     std::cout << searchingBugId << std::endl;
 
-                    std::cout << bugBoard.getBugById(searchingBugId.at(0));
+                    std::cout << bugBoard.getBugById(conversion_utils::trystoi(searchingBugId));
                 }
 
                 else {
-                    std::cout << "Error parsing ID" << std::endl;
+                    std::cout << "Error parsing ID...";
                 }
+
+                std::cout << std::endl << std::endl;
 
                 break;
             }
