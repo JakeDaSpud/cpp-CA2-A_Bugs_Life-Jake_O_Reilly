@@ -84,6 +84,8 @@ public:
     // Board.getAllBugs() / Board->getAllBugs()
     std::list<std::string> getAllBugs();
 
+    std::list<std::string> getAllBugHistories();
+
     void populateBugsFromFile(const std::string &fileName);
 
     virtual ~Board() {}

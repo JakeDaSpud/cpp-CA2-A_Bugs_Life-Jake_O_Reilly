@@ -76,12 +76,34 @@ int main() {
 
             // 4. Tap the Bug Board (causes move all, then fight/eat)
             case '4': {
+                std::cout << "[4]: Tapping board..." << std::endl;
+
                 bugBoard.tap();
+
                 break;
             }
 
             // 5. Display Life History of all Bugs (path taken)
             // bugBoard.getBugHistory()
+            case '5': {
+                //bugBoard.display();
+                std::cout << "[5]: Printing every bug's path history..." << std::endl;
+
+                if (!bugBoard.getAllBugs().empty()) {
+                    for (const std::string &currentBugHistory : bugBoard.getAllBugHistories()) {
+                        std::cout << currentBugHistory << std::endl;
+                    }
+                }
+
+                else {
+                    std::cout << "Hey! There's no bugs in the board, have you initialised it yet? (Try option [1]!)" << std::endl;
+                }
+
+                std::cout << std::endl;
+
+                break;
+            }
+
 
             //6. Display all Cells listing their Bugs
             // bugBoard.display()

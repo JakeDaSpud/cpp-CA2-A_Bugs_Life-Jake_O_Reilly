@@ -56,6 +56,8 @@ void Board::tap() {
     for (Bug* bug: allBugs) {
         std::move(bug);
     }
+
+    Board::display();
 }
 
 // Default reading file for instantiating Bugs and storing their pointers into a given vector
@@ -162,6 +164,29 @@ std::list<std::string> Board::getAllBugs() {
     }
 
     return bugListOut;
+}
+
+// Return all bugs in this board as a list of strings, instead of their Bug objects
+std::list<std::string> Board::getAllBugHistories() {
+    std::list<std::string> bugHistoryListOut;
+
+    // Iterate through all bugs
+    for (Bug* currentBug : this->allBugs) {
+        std::string temp;
+
+        temp = "[" + std::to_string(currentBug->getId()) + "] " + currentBug->getClass();
+
+        // Iterate through currentBug's list of pair<int, int>s
+        for (std::pair<int, int> path : currentBug->getPath()) {
+
+            temp += " (" + std::to_string(path.first) + ", ";
+            temp += std::to_string(path.second) + ");";
+        }
+
+        bugHistoryListOut.push_back(temp);
+    }
+
+    return bugHistoryListOut;
 }
 
 // Compare all bugs in the board until you find the same id, or leave the default message
