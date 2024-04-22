@@ -26,16 +26,29 @@ int main() {
             case '1': {
                 std::cout << "Selected [1] Initialise Board..." << std::endl;
                 bugBoard.populateBugsFromFile("inputBugs.txt");
+
+
+
                 break;
             }
 
             // 2. Display all Bugs
             case '2': {
                 //bugBoard.display();
-                std::cout << "MAIN DEBUG: Printing all bugs from bugBoard..." << std::endl;
-                for (const std::string &currentBug : bugBoard.getAllBugs()) {
-                    std::cout << currentBug << std::endl;
+                std::cout << "[2]: Printing all bugs from the board..." << std::endl;
+
+                if (!bugBoard.getAllBugs().empty()) {
+                    for (const std::string &currentBug : bugBoard.getAllBugs()) {
+                        std::cout << currentBug << std::endl;
+                    }
                 }
+
+                else {
+                    std::cout << "Hey! There's no bugs in the board, have you initialised it yet? (Try option [1]!)" << std::endl;
+                }
+
+                std::cout << std::endl;
+
                 break;
             }
 

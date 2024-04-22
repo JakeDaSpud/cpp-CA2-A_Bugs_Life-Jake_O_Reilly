@@ -32,12 +32,12 @@ void Board::populateBugsFromFile(const std::string &fileName) {
     // Check if file is there
     if (inputBugFile.is_open()) {
         std::string bugFileLine;
-        std::cout << "DEBUG: Reading bug file" << std::endl;
+        //std::cout << "DEBUG: Reading bug file" << std::endl;
 
         // Loop through while file has next
         // This is the full bug line being read
         while (std::getline(inputBugFile, bugFileLine)) {
-            std::cout << bugFileLine << std::endl;
+            //std::cout << bugFileLine << std::endl;
 
             // Adapted using Martin York's SO answer:
             // - https://stackoverflow.com/questions/3910326/c-read-file-line-by-line-then-split-each-line-using-the-delimiter
@@ -55,7 +55,7 @@ void Board::populateBugsFromFile(const std::string &fileName) {
                 // Converting data's C or H string to a char
                 bugType = data.at(0);
 
-                std::cout << "bugType: " << bugType << std::endl;
+                //std::cout << "bugType: " << bugType << std::endl;
 
                 if (bugType == 'C') {
                     /*linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize*/;
@@ -67,10 +67,11 @@ void Board::populateBugsFromFile(const std::string &fileName) {
 
                     // Instantiate Crawler
                     Crawler *newCrawler = new Crawler(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize));
-                    std::cout << "newCrawler made: " << newCrawler->asString() << std::endl;
+                    //std::cout << "newCrawler made: " << newCrawler->asString() << std::endl;
 
                     // Add ptr to vector
                     this->allBugs.push_back(newCrawler);
+                    std::cout << "Added Crawler..." << std::endl;
                 }
 
                 else if (bugType == 'H') {
@@ -84,10 +85,11 @@ void Board::populateBugsFromFile(const std::string &fileName) {
 
                     // Instantiate Hopper
                     Hopper *newHopper = new Hopper(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize), std::stoi(bugHopLength));
-                    std::cout << "newHopper made: " << newHopper->asString() << std::endl;
+                    //std::cout << "newHopper made: " << newHopper->asString() << std::endl;
 
                     // Add ptr to vector
                     this->allBugs.push_back(newHopper);
+                    std::cout << "Added Hopper..." << std::endl;
                 }
 
                 /* Custom Bug

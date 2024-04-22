@@ -15,7 +15,6 @@
 // Functions for main.cpp
 int main();
 void printMenu();
-void populateBugsFromFile(std::vector<Bug*> &bugVector, std::string fileName = "inputBugs.txt");
 
 Board bugBoard;
 
