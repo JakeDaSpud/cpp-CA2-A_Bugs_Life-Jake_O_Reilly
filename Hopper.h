@@ -30,6 +30,7 @@ public:
     };
 
     virtual std::string asString();
+    virtual std::string getClass();
 
     int getHopLength() const;
     void setHopLength(int hopLength);

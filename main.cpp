@@ -27,7 +27,7 @@ int main() {
                 std::cout << "Selected [1] Initialise Board..." << std::endl;
                 bugBoard.populateBugsFromFile("inputBugs.txt");
 
-
+                std::cout << std::endl;
 
                 break;
             }
@@ -54,6 +54,25 @@ int main() {
 
             // 3. Find a Bug (given an id)
             // bugBoard.findBug(int bugId)
+            case '3': {
+                std::cout << "[3]: Enter Bug ID to search for:" << std::endl;
+
+                std::string searchingBugId;
+                std::cin >> searchingBugId;
+
+                // Valid, ONLY integer input
+                if (conversion_utils::trystoi(searchingBugId)) {
+                    std::cout << searchingBugId << std::endl;
+
+                    std::cout << bugBoard.getBugById(searchingBugId.at(0));
+                }
+
+                else {
+                    std::cout << "Error parsing ID" << std::endl;
+                }
+
+                break;
+            }
 
             // 4. Tap the Bug Board (causes move all, then fight/eat)
             case '4': {
@@ -62,7 +81,7 @@ int main() {
             }
 
             // 5. Display Life History of all Bugs (path taken)
-
+            // bugBoard.getBugHistory()
 
             //6. Display all Cells listing their Bugs
             // bugBoard.display()

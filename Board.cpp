@@ -1,4 +1,3 @@
-
 #include <fstream>
 #include <sstream>
 #include "Board.h"
@@ -7,6 +6,41 @@
 
 void Board::display() {
     std::cout << std::endl << "Current Board State:" << std::endl;
+
+    // First update the whole board to show current bug positions
+    // Check if there are bugs initialised
+    if (!this->allBugs.empty()) {
+
+        // Iterate bugs
+        for (Bug* currentBug : allBugs) {
+            char boardChar = '-';
+
+            // Check if bug is alive
+            if (currentBug->getIsAlive()) {
+
+                if (currentBug->getClass() == "Crawler") {
+                    boardChar = 'C';
+                }
+
+                else if (currentBug->getClass() == "Hopper") {
+                    boardChar = 'H';
+                }
+
+                else if (currentBug->getClass() == "Indecisus") {
+                    boardChar = 'I';
+                }
+            }
+
+            // Set dead bug character 'x'
+            else {
+                boardChar = 'x';
+            }
+
+            // Set character on board where that bug is
+            board[currentBug->getPosition().first][currentBug->getPosition().second] = boardChar;
+        }
+    }
+
     for (int currentColumn = 0; currentColumn < 10; currentColumn++) {
         for (int currentRow = 0; currentRow < 10; currentRow++) {
             std::cout << board[currentColumn][currentRow] << "  ";
@@ -109,9 +143,6 @@ void Board::populateBugsFromFile(const std::string &fileName) {
         /*for (auto item: bugVector) {
             item->asString();
         }*/
-
-        // For formatting purposes, don't want the outputs touching!
-        std::cout << std::endl;
     }
 
         // Error, can't find input file
@@ -131,4 +162,18 @@ std::list<std::string> Board::getAllBugs() {
     }
 
     return bugListOut;
+}
+
+// Compare all bugs in the board until you find the same id, or leave the default message
+std::string Board::getBugById(const int &searchId) {
+    std::string bugDataOut = "Bug not found on the board!";
+
+    for (Bug* currentBug : this->allBugs) {
+        if (currentBug->getId() == searchId) {
+            bugDataOut = currentBug->asString();
+            break;
+        }
+    }
+
+    return bugDataOut;
 }

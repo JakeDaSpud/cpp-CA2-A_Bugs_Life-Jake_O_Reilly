@@ -21,15 +21,6 @@ protected:
     bool isWayBlocked() { return false; };
 
 public:
-    /*Bug(int id, const std::pair<int, int> &position, direction facingDirection, int size) {
-        this->id = id;
-        this->position = position;
-        this->facingDirection = facingDirection;
-        this->isAlive = true; // Not in @param
-        this->size = size;
-
-        path.push_back(position); // Adds initial position (@param &position) to history
-    }*/
 
     Bug(int id, const std::pair<int, int> &position, direction facingDirection, int size)
     : id(id), position(position), facingDirection(facingDirection), size(size) {
@@ -53,9 +44,8 @@ public:
     const std::list<std::pair<int, int>> &getPath() const;
     void setPath(const std::list<std::pair<int, int>> &path);
 
-    //make empty path
-
     virtual std::string asString() = 0; // Pure virtual
+    virtual std::string getClass() = 0;
 
     //virtual ~Bug();
     // virtual so the child Bugs must make their own

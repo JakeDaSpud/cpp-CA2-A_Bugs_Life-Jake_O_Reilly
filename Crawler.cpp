@@ -23,4 +23,8 @@ std::string Crawler::asString() {
     return out;
 }
 
+std::string Crawler::getClass() {
+    return "Crawler";
+}
+
 Crawler::~Crawler() = default;

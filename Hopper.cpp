@@ -32,6 +32,10 @@ std::string Hopper::asString() {
     return out;
 }
 
+std::string Hopper::getClass() {
+    return "Hopper";
+}
+
 Hopper::~Hopper() {
 
 }

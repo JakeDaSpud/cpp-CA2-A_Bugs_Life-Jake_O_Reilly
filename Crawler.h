@@ -22,6 +22,7 @@ public:
     };
 
     virtual std::string asString();
+    virtual std::string getClass();
 
     //Destructor
     ~Crawler();

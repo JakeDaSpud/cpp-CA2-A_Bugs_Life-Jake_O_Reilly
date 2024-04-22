@@ -77,6 +77,9 @@ public:
     // Check location of all Bugs, if they
     void fight();
 
+    // Board.getBugById(int searchId) / Board->getBugById(int searchId)
+    // Search list for specific bug and either return string of bug info, or return "not found" message
+    std::string getBugById(const int &searchId);
 
     // Board.getAllBugs() / Board->getAllBugs()
     std::list<std::string> getAllBugs();
