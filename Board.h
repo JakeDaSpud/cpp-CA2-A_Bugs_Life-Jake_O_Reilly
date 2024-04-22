@@ -19,13 +19,11 @@
 // Fields:
 // - int[][] state
 // - List<Bug*> allBugs
-// - List<Bug*> aliveBugs
 // Functions:
 // - Board(int length = 10, int height = 10) [Default will make a 10x10 Board]
 // - void tap() [Every Bug uses .move()]
 // - void display() [Show board with all alive Bug locations]
-// - void displayAllBugs()
-// - std::List<std::string> getAliveBugs() [Return list of all alive bugs with Bug.asString]
+// - std::List<std::string> getAllBugs() [Return list of all bugs with Bug.asString]
 // - void runSimulation() [Every Bug uses move() every 1 second]
 // - void writeGameHistory(std::ofstream fileName)
 // - std::string findBug(int bugId)
@@ -34,8 +32,10 @@
 class Board {
 private:
     // Fields
-    std::list<Bug*> allBugs;
     char board[10][10];
+
+protected:
+    std::list<Bug*> allBugs;
 
 public:
     // Default constructor
@@ -78,7 +78,10 @@ public:
     void fight();
 
 
-    std::list<std::string> getAliveBugs();
+    // Board.getAllBugs() / Board->getAllBugs()
+    std::list<std::string> getAllBugs();
+
+    void populateBugsFromFile(const std::string &fileName);
 
     virtual ~Board() {}
 };
