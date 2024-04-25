@@ -43,7 +43,7 @@ void Board::display() {
 
     for (int currentColumn = 0; currentColumn < 10; currentColumn++) {
         for (int currentRow = 0; currentRow < 10; currentRow++) {
-            std::cout << board[currentColumn][currentRow] << "  ";
+            std::cout << board[currentRow][currentColumn] << "  ";
         }
         std::cout << std::endl;
     }
@@ -156,14 +156,132 @@ void Board::populateBugsFromFile(const std::string &fileName) {
 void Board::runSimulation() {}
 
 // Return all bugs in this board as a list of strings, instead of their Bug objects
-std::list<std::string> Board::getAllBugs() {
+std::list<std::string> Board::getAllBugs(const bool &listCellFirst = false) {
     std::list<std::string> bugListOut;
 
+    // Original function didn't care about cells being first, now I must check if the user is printing by cell or just all bugs!
     for (Bug* currentBug : this->allBugs) {
-        bugListOut.push_back(currentBug->asString());
+        std::string prefix = "";
+
+        // If listCellFirst formatting is passed as true, we'll concat the cell position first!
+        if (listCellFirst) {
+            prefix = " (" + std::to_string(currentBug->getPosition().first) + ", ";
+            prefix += std::to_string(currentBug->getPosition().second) + "): ";
+        }
+
+        bugListOut.push_back(prefix + currentBug->asString());
     }
 
     return bugListOut;
+}
+
+std::list<std::string> Board::getCellState() {
+    std::list<std::string> cellListOut;
+
+    // This temp list is instantiated in the first layer of the function because we probably wouldn't be printing the
+    // cell state without putting bugs in first
+    std::list<Bug*> bugsToBeConcat;
+
+    for (int currentY = 0; currentY < 10; currentY++) {
+
+        for (int currentX = 0; currentX < 10; currentX++) {
+
+            // This will be added to cellListOut, it will say the coordinate and the cell state
+            // Add current coordinate to output
+            std::string cellData = "[" + std::to_string(currentX) + ", " + std::to_string(currentY) + "]: ";
+
+            // this means the cell is empty, concat empty
+            if (board[currentX][currentY] == '-') {
+                cellData += "empty";
+            }
+
+            // the cell is NOT '-', so there is a bug (in any state) here
+            else {
+
+                for (Bug* tempBug : allBugs) {
+
+                    std::cout << "tempBug: " + tempBug->asString() << std::endl;
+
+                    // Add all bugs to the temp toBeDealtWith list with the current coords
+                    if (tempBug->getPosition().first == currentX && tempBug->getPosition().second == currentY) {
+                        std::string alive = (tempBug->getIsAlive()) ? "Yes" : "No";
+
+                        cellData += tempBug->asString() + " alive[" + alive + "]; ";
+                    }
+
+                    // Go through list of temp bugs, concatting them to the cellData like Bug->asString() + ";"
+                    //for (Bug* tempBug : bugsToBeConcat)
+                }
+
+                /* I have realised I don't need to know what is being displayed, it doesn't matter because the
+                 * Bug->asString() will show the different types, alive or not too
+
+                // Cell has an Alive Crawler
+                if (board[currentY][currentX] == 'C') {
+                    for (Bug* tempBug : allBugs) {
+
+                        // Add all bugs to the temp toBeDealtWith list with the current coords
+                        if (tempBug->getPosition().first == currentX && tempBug->getPosition().second == currentY) {
+
+                        }
+
+                        // Go through list of temp bugs, concatting them to the cellData like Bug->asString() + ";"
+                    }
+
+                }
+
+                // Cell has an Alive Hopper
+                else if (board[currentY][currentX] == 'H') {
+
+                }
+
+                // Cell has an Alive Indecisus
+                else if (board[currentY][currentX] == 'I') {
+
+                }
+
+                // Cell has a dead Bug
+                else if (board[currentY][currentX] == 'x') {
+
+                }
+                */
+            }
+
+            // Adding the current finished cellData to the output list
+            cellListOut.push_back(cellData);
+        }
+
+    }
+
+    //hashmap?
+
+    //pair (x, y) -> string ("empty" default, or &Crawler, &Hopper, &Indecisus, after check isAlive, could be + concat "dead")
+
+
+
+    // iterate whole board arr[][]
+    // if char is c h or i:
+    //      compare current arr[][] position with all bugs to find their data
+    //      when found, concat bug as string to output string
+    //      push string to list
+
+
+
+
+    // Original function didn't care about cells being first, now I must check if the user is printing by cell or just all bugs!
+    /*for (Bug* currentBug : this->allBugs) {
+        std::string prefix = "";
+
+        // If listCellFirst formatting is passed as true, we'll concat the cell position first!
+        if (true) {
+            prefix = " (" + std::to_string(currentBug->getPosition().first) + ", ";
+            prefix += std::to_string(currentBug->getPosition().second) + "): ";
+        }
+
+        cellListOut.push_back(prefix + currentBug->asString());
+    }*/
+
+    return cellListOut;
 }
 
 // Return all bugs in this board as a list of strings, instead of their Bug objects
@@ -203,3 +321,5 @@ std::string Board::getBugById(const int &searchId) {
 
     return bugDataOut;
 }
+
+

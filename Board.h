@@ -82,7 +82,9 @@ public:
     std::string getBugById(const int &searchId);
 
     // Board.getAllBugs() / Board->getAllBugs()
-    std::list<std::string> getAllBugs();
+    std::list<std::string> getAllBugs(const bool &listCellFirst);
+
+    std::list<std::string> getCellState();
 
     std::list<std::string> getAllBugHistories();
 

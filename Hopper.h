@@ -10,7 +10,6 @@
 class Hopper: public Bug {
 
 protected:
-
     int hopLength;
     virtual void move();
 

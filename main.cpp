@@ -37,8 +37,8 @@ int main() {
                 //bugBoard.display();
                 std::cout << "[2]: Printing all bugs from the board..." << std::endl;
 
-                if (!bugBoard.getAllBugs().empty()) {
-                    for (const std::string &currentBug : bugBoard.getAllBugs()) {
+                if (!bugBoard.getAllBugs(false).empty()) {
+                    for (const std::string &currentBug : bugBoard.getAllBugs(false)) {
                         std::cout << currentBug << std::endl;
                     }
                 }
@@ -88,10 +88,9 @@ int main() {
             // 5. Display Life History of all Bugs (path taken)
             // bugBoard.getBugHistory()
             case '5': {
-                //bugBoard.display();
                 std::cout << "[5]: Printing every bug's path history..." << std::endl;
 
-                if (!bugBoard.getAllBugs().empty()) {
+                if (!bugBoard.getAllBugs(false).empty()) {
                     for (const std::string &currentBugHistory : bugBoard.getAllBugHistories()) {
                         std::cout << currentBugHistory << std::endl;
                     }
@@ -108,7 +107,17 @@ int main() {
 
 
             //6. Display all Cells listing their Bugs
-            // bugBoard.display()
+            case '6': {
+                std::cout << "[6]: Printing every cell's state..." << std::endl;
+
+                for (const std::string &currentBugHistory : bugBoard.getCellState()) {
+                    std::cout << currentBugHistory << std::endl;
+                }
+
+                std::cout << std::endl;
+
+                break;
+            }
 
             // 7. Run simulation (generates a Tap every second)
             // bugBoard.runSimulation()
