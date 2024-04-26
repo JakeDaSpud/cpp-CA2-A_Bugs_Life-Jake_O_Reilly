@@ -2,6 +2,7 @@
 #ifndef A_BUGS_LIFE_JAKE_O_REILLY_CA2_BOARD_H
 #define A_BUGS_LIFE_JAKE_O_REILLY_CA2_BOARD_H
 
+#include <algorithm>
 #include <list>
 #include <string>
 #include <vector>
@@ -90,7 +91,7 @@ public:
 
     void populateBugsFromFile(const std::string &fileName);
 
-    void writeGameHistoryToFile(const std::string &fileName);
+    void writeGameHistoryToFile();
 
     virtual ~Board() {}
 };

@@ -241,6 +241,47 @@ std::list<std::string> Board::getAllBugHistories() {
     return bugHistoryListOut;
 }
 
+void Board::writeGameHistoryToFile() {
+
+    // Using this page: https://www.tutorialspoint.com/cplusplus/cpp_date_time.htm
+
+    // Create time struct
+    time_t timeNow = time(nullptr);
+
+    // Get the current date and make it into a string
+    char *dateTime = ctime(&timeNow);
+    std::string dateTimeString = dateTime;
+    dateTimeString = dateTimeString.substr(0, dateTimeString.length()-1);
+
+    // Replace spaces with _
+    std::replace(dateTimeString.begin(), dateTimeString.end(), ' ', '_');
+    // Replace : with -
+    std::replace(dateTimeString.begin(), dateTimeString.end(), ':', '-');
+
+    // Create filename
+    std::string fileName = "./game-history/A_Bugs_Life_" + dateTimeString + ".txt";
+
+    std::ofstream file(fileName);
+
+    // Get histories to write
+    std::list<std::string> toWrite = this->getAllBugHistories();
+
+    if (file.is_open()) {
+        // Write them all into the file
+        for (std::string currentBugHistory : toWrite) {
+            std::cout << "Writing to file: " + currentBugHistory << std::endl;
+            file << currentBugHistory << std::endl;
+        }
+
+        // Close file
+        file.close();
+    }
+
+    else {
+        std::cout << "Error: Can't write output file. Quitting..." << std::endl;
+    }
+}
+
 // Compare all bugs in the board until you find the same id, or leave the default message
 std::string Board::getBugById(const int &searchId) {
     std::string bugDataOut = "Bug not found on the board!";

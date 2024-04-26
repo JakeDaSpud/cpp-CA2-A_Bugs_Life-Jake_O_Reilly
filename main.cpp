@@ -127,23 +127,8 @@ int main() {
             // 8. Exit (write Life History of all Bugs to file)
             case '8': {
                 std::cout << "[8]: Exiting and writing Game History..." << std::endl;
-                std::string fileName;
 
-                // Using this page: https://www.tutorialspoint.com/cplusplus/cpp_date_time.htm
-
-                // Create time struct
-                time_t timeNow = time(nullptr);
-
-                // Get the current date and make it into a string
-                char *dateTime = ctime(&timeNow);
-                std::string dateTimeString = dateTime;
-
-                // Replace spaces with _
-                std::replace(dateTimeString.begin(), dateTimeString.end(), ' ', '_');
-
-                fileName = "A_Bugs_Life_" + dateTimeString;
-
-                //bugBoard.writeGameHistoryToFile(historyFileName);
+                bugBoard.writeGameHistoryToFile();
                 break;
             }
 
