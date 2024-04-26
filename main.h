@@ -2,6 +2,7 @@
 #ifndef A_BUGS_LIFE_JAKE_O_REILLY_CA2_MAIN_H
 #define A_BUGS_LIFE_JAKE_O_REILLY_CA2_MAIN_H
 
+#include <algorithm>
 #include <iostream>
 #include <utility>
 #include <vector>

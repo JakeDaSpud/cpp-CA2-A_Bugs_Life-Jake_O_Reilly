@@ -90,6 +90,8 @@ public:
 
     void populateBugsFromFile(const std::string &fileName);
 
+    void writeGameHistoryToFile(const std::string &fileName);
+
     virtual ~Board() {}
 };
 

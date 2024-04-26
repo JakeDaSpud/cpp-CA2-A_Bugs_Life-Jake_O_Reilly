@@ -24,7 +24,7 @@ int main() {
 
             // 1. Initialize Bug Board (load data from file)
             case '1': {
-                std::cout << "Selected [1] Initialise Board..." << std::endl;
+                std::cout << "[1]: Initialising Board..." << std::endl;
                 bugBoard.populateBugsFromFile("inputBugs.txt");
 
                 std::cout << std::endl;
@@ -35,7 +35,7 @@ int main() {
             // 2. Display all Bugs
             case '2': {
                 //bugBoard.display();
-                std::cout << "[2]: Printing all bugs from the board..." << std::endl;
+                std::cout << "[2]: Printing all Bugs from the Board..." << std::endl;
 
                 if (!bugBoard.getAllBugs(false).empty()) {
                     for (const std::string &currentBug : bugBoard.getAllBugs(false)) {
@@ -78,7 +78,7 @@ int main() {
 
             // 4. Tap the Bug Board (causes move all, then fight/eat)
             case '4': {
-                std::cout << "[4]: Tapping board..." << std::endl;
+                std::cout << "[4]: Tapping Board..." << std::endl;
 
                 bugBoard.tap();
 
@@ -88,7 +88,7 @@ int main() {
             // 5. Display Life History of all Bugs (path taken)
             // bugBoard.getBugHistory()
             case '5': {
-                std::cout << "[5]: Printing every bug's path history..." << std::endl;
+                std::cout << "[5]: Printing every Bug's path history..." << std::endl;
 
                 if (!bugBoard.getAllBugs(false).empty()) {
                     for (const std::string &currentBugHistory : bugBoard.getAllBugHistories()) {
@@ -97,7 +97,7 @@ int main() {
                 }
 
                 else {
-                    std::cout << "Hey! There's no bugs in the board, have you initialised it yet? (Try option [1]!)" << std::endl;
+                    std::cout << "Hey! There's no Bugs in the board, have you initialised it yet? (Try option [1]!)" << std::endl;
                 }
 
                 std::cout << std::endl;
@@ -108,7 +108,7 @@ int main() {
 
             //6. Display all Cells listing their Bugs
             case '6': {
-                std::cout << "[6]: Printing every cell's state..." << std::endl;
+                std::cout << "[6]: Printing every Cell's state..." << std::endl;
 
                 for (const std::string &currentBugHistory : bugBoard.getCellState()) {
                     std::cout << currentBugHistory << std::endl;
@@ -122,10 +122,28 @@ int main() {
             // 7. Run simulation (generates a Tap every second)
             // bugBoard.runSimulation()
 
+
+
             // 8. Exit (write Life History of all Bugs to file)
             case '8': {
-                std::cout << "Option 8: Exit and write game history to a file selected... put the rest of the code in here too..." << std::endl;
-                // bugBoard.writeorwhatever("fileOutputName.txt")
+                std::cout << "[8]: Exiting and writing Game History..." << std::endl;
+                std::string fileName;
+
+                // Using this page: https://www.tutorialspoint.com/cplusplus/cpp_date_time.htm
+
+                // Create time struct
+                time_t timeNow = time(nullptr);
+
+                // Get the current date and make it into a string
+                char *dateTime = ctime(&timeNow);
+                std::string dateTimeString = dateTime;
+
+                // Replace spaces with _
+                std::replace(dateTimeString.begin(), dateTimeString.end(), ' ', '_');
+
+                fileName = "A_Bugs_Life_" + dateTimeString;
+
+                //bugBoard.writeGameHistoryToFile(historyFileName);
                 break;
             }
 
@@ -151,6 +169,6 @@ void printMenu() {
               << "[5] Display all Bug History\n"
               << "[6] Display all Board Cell Statuses\n"
               << "[7] Run Simulation\n"
-              << "[8] Exit and Save Bug History\n"
+              << "[8] Exit and Save Game History\n"
               << "\nEnter a number to choose an item:" << std::endl;
 }
