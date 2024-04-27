@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "Crawler.h"
 #include "Hopper.h"
+#include "Indecisus.h"
 
 void Board::display() {
     std::cout << std::endl << "Current Board State:" << std::endl;
@@ -62,93 +63,112 @@ void Board::tap() {
 
 // Default reading file for instantiating Bugs and storing their pointers into a given vector
 void Board::populateBugsFromFile(const std::string &fileName) {
-    std::ifstream inputBugFile;
-    inputBugFile.open(fileName);
 
-    // Check if file is there
-    if (inputBugFile.is_open()) {
-        std::string bugFileLine;
-        //std::cout << "DEBUG: Reading bug file" << std::endl;
+    // Check if the board has already been initialised
+    if (!initialised) {
 
-        // Loop through while file has next
-        // This is the full bug line being read
-        while (std::getline(inputBugFile, bugFileLine)) {
-            //std::cout << bugFileLine << std::endl;
+        std::ifstream inputBugFile;
+        inputBugFile.open(fileName);
 
-            // Adapted using Martin York's SO answer:
-            // - https://stackoverflow.com/questions/3910326/c-read-file-line-by-line-then-split-each-line-using-the-delimiter
+        // Check if file is there
+        if (inputBugFile.is_open()) {
+            std::string bugFileLine;
+            //std::cout << "DEBUG: Reading bug file" << std::endl;
 
-            std::stringstream linestream(bugFileLine);
-            std::string data;
+            // Loop through while file has next
+            // This is the full bug line being read
+            while (std::getline(inputBugFile, bugFileLine)) {
+                //std::cout << bugFileLine << std::endl;
 
-            // Going through current line of file, delim by delim
-            // This delim will grab the next ; item
-            while (std::getline(linestream, data, ';')) {
-                char bugType;
-                //int bugId;
-                std::string bugId, bugX, bugY, bugDir, bugSize, bugHopLength, bugInterval;
+                // Adapted using Martin York's SO answer:
+                // - https://stackoverflow.com/questions/3910326/c-read-file-line-by-line-then-split-each-line-using-the-delimiter
 
-                // Converting data's C or H string to a char
-                bugType = data.at(0);
+                std::stringstream linestream(bugFileLine);
+                std::string data;
 
-                //std::cout << "bugType: " << bugType << std::endl;
+                // Going through current line of file, delim by delim
+                // This delim will grab the next ; item
+                while (std::getline(linestream, data, ';')) {
+                    char bugType;
+                    //int bugId;
+                    std::string bugId, bugX, bugY, bugDir, bugSize, bugHopLength, bugInterval;
 
-                if (bugType == 'C') {
-                    /*linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize*/;
-                    std::getline(linestream, bugId, ';');
-                    std::getline(linestream, bugX, ';');
-                    std::getline(linestream, bugY, ';');
-                    std::getline(linestream, bugDir, ';');
-                    std::getline(linestream, bugSize, ';');
+                    // Converting data's C or H string to a char
+                    bugType = data.at(0);
 
-                    // Instantiate Crawler
-                    Crawler *newCrawler = new Crawler(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize));
-                    //std::cout << "newCrawler made: " << newCrawler->asString() << std::endl;
+                    //std::cout << "bugType: " << bugType << std::endl;
 
-                    // Add ptr to vector
-                    this->allBugs.push_back(newCrawler);
-                    std::cout << "Added Crawler..." << std::endl;
+                    if (bugType == 'C') {
+                        /*linestream >> bugId >> bugX >> bugY >> bugDir >> bugSize*/;
+                        std::getline(linestream, bugId, ';');
+                        std::getline(linestream, bugX, ';');
+                        std::getline(linestream, bugY, ';');
+                        std::getline(linestream, bugDir, ';');
+                        std::getline(linestream, bugSize, ';');
+
+                        // Instantiate Crawler
+                        Crawler *newCrawler = new Crawler(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize));
+                        //std::cout << "newCrawler made: " << newCrawler->asString() << std::endl;
+
+                        // Add ptr to vector
+                        this->allBugs.push_back(newCrawler);
+                        std::cout << "Added Crawler..." << std::endl;
+                    } else if (bugType == 'H') {
+
+                        std::getline(linestream, bugId, ';');
+                        std::getline(linestream, bugX, ';');
+                        std::getline(linestream, bugY, ';');
+                        std::getline(linestream, bugDir, ';');
+                        std::getline(linestream, bugSize, ';');
+                        std::getline(linestream, bugHopLength, ';');
+
+                        // Instantiate Hopper
+                        Hopper *newHopper = new Hopper(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize), std::stoi(bugHopLength));
+                        //std::cout << "newHopper made: " << newHopper->asString() << std::endl;
+
+                        // Add ptr to vector
+                        this->allBugs.push_back(newHopper);
+                        std::cout << "Added Hopper..." << std::endl;
+                    } else if (bugType == 'I') {
+
+                        std::getline(linestream, bugId, ';');
+                        std::getline(linestream, bugX, ';');
+                        std::getline(linestream, bugY, ';');
+                        std::getline(linestream, bugDir, ';');
+                        std::getline(linestream, bugSize, ';');
+                        std::getline(linestream, bugInterval, ';');
+
+                        // Instantiate
+                        Indecisus *newIndecisus = new Indecisus(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize), std::stoi(bugInterval));
+
+                        // Add ptr to vector
+                        this->allBugs.push_back(newIndecisus);
+                        std::cout << "Added Indecisus..." << std::endl;
+                    }
                 }
-
-                else if (bugType == 'H') {
-
-                    std::getline(linestream, bugId, ';');
-                    std::getline(linestream, bugX, ';');
-                    std::getline(linestream, bugY, ';');
-                    std::getline(linestream, bugDir, ';');
-                    std::getline(linestream, bugSize, ';');
-                    std::getline(linestream, bugHopLength, ';');
-
-                    // Instantiate Hopper
-                    Hopper *newHopper = new Hopper(std::stoi(bugId), std::pair<int, int>(std::stoi(bugX), std::stoi(bugY)), conversion_utils::stodir(bugDir), std::stoi(bugSize), std::stoi(bugHopLength));
-                    //std::cout << "newHopper made: " << newHopper->asString() << std::endl;
-
-                    // Add ptr to vector
-                    this->allBugs.push_back(newHopper);
-                    std::cout << "Added Hopper..." << std::endl;
-                }
-
-                /* Custom Bug
-                else if (.at(0) == 'I') {
-                    // Instantiate Indecisus
-
-                    // Add ptr to vector
-                }
-                 */
             }
+
+            // Close file after reading
+            inputBugFile.close();
+
+            initialised = true;
         }
 
-        // Close file after reading
-        inputBugFile.close();
+            // Error, can't find input file
+        else {
+            std::cout << "Error: Can't read input file." << std::endl;
+        }
     }
 
-        // Error, can't find input file
     else {
-        std::cout << "Error: Can't read input file." << std::endl;
+        std::cout << "Board already initialised with Bugs!" << std::endl;
     }
 }
 
-void Board::runSimulation() {}
+// Run tap() every 1 second
+void Board::runSimulation() {
+
+}
 
 // Return all bugs in this board as a list of strings, instead of their Bug objects
 std::list<std::string> Board::getAllBugs(const bool &listCellFirst = false) {

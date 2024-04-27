@@ -31,12 +31,12 @@
 - [x] Include .h header files (is that right? or do i include the .cpp files?) for ```Bug```, ```Crawler``` and ```Hopper```
 - [x] Make bugs.txt: input file for all bugs to be instantiated (e.g. "```C;101;0;0;4;10``` ```H;102;9;0;1;8;2```")
 - [x] Make Menu System
-- - [ ] Dummy items 1-8
-- - [ ] Menu 1: Initialise board (load ```Bug```s from ```bugs.txt```)
-- - [ ] Menu 2: Display all ```Bug```s
-- - [ ] Menu 3: Find a ```Bug``` from id
+- - [x] Dummy items 1-8
+- - [x] Menu 1: Initialise board (load ```Bug```s from ```bugs.txt```)
+- - [x] Menu 2: Display all ```Bug```s
+- - [x] Menu 3: Find a ```Bug``` from id
 - - [ ] Menu 4: Tap the board (```moveAll()``` -> ```fight()``` or ```eat()```)
-- - [ ] Menu 5: Display history of all ```Bug```s (path taken ***AND ACTIONS? ASKKKKKKK***)
-- - [ ] Menu 6: Display all cells listing their bugs (i.e "```6-3: Empty``` ```0-5: Crawler 64, Hopper 33```)
+- - [x] Menu 5: Display history of all ```Bug```s (path taken ***AND ACTIONS? ASKKKKKKK***)
+- - [x] Menu 6: Display all cells listing their bugs (i.e "```6-3: Empty``` ```0-5: Crawler 64, Hopper 33```)
 - - [ ] Menu 7: Run simulation (run ```tap()``` every second)
-- - [ ] Menu 8: Write current ```Bug``` history to a file, then Exit app 
+- - [x] Menu 8: Write current ```Bug``` history to a file, then Exit app 

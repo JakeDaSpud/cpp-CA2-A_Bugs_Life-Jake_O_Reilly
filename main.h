@@ -7,6 +7,7 @@
 #include <vector>
 #include "Crawler.h"
 #include "Hopper.h"
+#include "Indecisus.h"
 #include <fstream>
 #include <sstream>
 #include "conversion_utils.h"

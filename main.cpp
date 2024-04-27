@@ -6,14 +6,14 @@ int main() {
     // userInput is string, not int, so I can catch non-int input
     std::string userInput = "-1";
 
-    std::cout << "DEBUG: Hello, World! START..." << std::endl;
+    //std::cout << "DEBUG: Hello, World! START..." << std::endl;
 
     Board bugBoard;
     std::vector<Bug*> bugPtrVector;
 
-    for (auto &item : bugPtrVector) {
+    /*for (auto &item : bugPtrVector) {
         std::cout << "item&: " << item << "\nbyte size: " << sizeof(item) << std::endl;
-    }
+    }*/
 
     do {
         // Display menu options 1-8 to user, then take new input
@@ -62,7 +62,7 @@ int main() {
 
                 // Valid, ONLY integer input
                 if (conversion_utils::trystoi(searchingBugId)) {
-                    std::cout << searchingBugId << std::endl;
+                    //std::cout << searchingBugId << std::endl;
 
                     std::cout << bugBoard.getBugById(conversion_utils::trystoi(searchingBugId));
                 }
@@ -134,7 +134,8 @@ int main() {
 
             // If the user input isn't 1 - 8
             default: {
-                std::cout << "Error: Menu option not recognised." << std::endl;
+                std::cout << "Error: Menu option not recognised." << std::endl << std::endl;
+
                 break;
             }
         }

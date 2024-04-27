@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Direction.cpp.obj.d"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Hopper.cpp.obj"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Hopper.cpp.obj.d"
+  "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Indecisus.cpp.obj"
+  "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Indecisus.cpp.obj.d"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/conversion_utils.cpp.obj"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/conversion_utils.cpp.obj.d"
   "CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/main.cpp.obj"

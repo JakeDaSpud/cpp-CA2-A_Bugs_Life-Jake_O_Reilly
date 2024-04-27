@@ -3,8 +3,6 @@
 #define A_BUGS_LIFE_JAKE_O_REILLY_CA2_CRAWLER_H
 
 #include "Bug.h"
-#include <list>
-#include <utility>
 
 // Public inheritance keeps protected fields protected
 class Crawler : public Bug {

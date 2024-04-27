@@ -248,6 +248,30 @@ Hopper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Hopper.cpp.s
 .PHONY : Hopper.cpp.s
 
+Indecisus.obj: Indecisus.cpp.obj
+.PHONY : Indecisus.obj
+
+# target to build an object file
+Indecisus.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Indecisus.cpp.obj
+.PHONY : Indecisus.cpp.obj
+
+Indecisus.i: Indecisus.cpp.i
+.PHONY : Indecisus.i
+
+# target to preprocess a source file
+Indecisus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Indecisus.cpp.i
+.PHONY : Indecisus.cpp.i
+
+Indecisus.s: Indecisus.cpp.s
+.PHONY : Indecisus.s
+
+# target to generate assembly for a file
+Indecisus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\A_Bugs_Life_Jake_O_Reilly_CA2.dir\build.make CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Indecisus.cpp.s
+.PHONY : Indecisus.cpp.s
+
 conversion_utils.obj: conversion_utils.cpp.obj
 .PHONY : conversion_utils.obj
 
@@ -320,6 +344,9 @@ help:
 	@echo ... Hopper.obj
 	@echo ... Hopper.i
 	@echo ... Hopper.s
+	@echo ... Indecisus.obj
+	@echo ... Indecisus.i
+	@echo ... Indecisus.s
 	@echo ... conversion_utils.obj
 	@echo ... conversion_utils.i
 	@echo ... conversion_utils.s

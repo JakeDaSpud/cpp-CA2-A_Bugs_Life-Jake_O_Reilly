@@ -34,6 +34,7 @@ class Board {
 private:
     // Fields
     char board[10][10];
+    bool initialised = false;
 
 protected:
     std::list<Bug*> allBugs;
@@ -41,7 +42,7 @@ protected:
 public:
     // Default constructor
     Board() {
-        std::cout << "DEBUG: Creating board of size 10x10" << std::endl;
+        //std::cout << "DEBUG: Creating board of size 10x10" << std::endl;
 
         for (int currentColumn = 0; currentColumn < 10; currentColumn++) {
             for (int currentRow = 0; currentRow < 10; currentRow++) {
