@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "Bug.h"
+#include <unistd.h>
 
 // The board will:
 // - Be where Bugs are stored (Hoppers, Crawlers, Indecisus)
@@ -89,6 +90,8 @@ public:
     std::list<std::string> getCellState();
 
     std::list<std::string> getAllBugHistories();
+
+    int getAliveBugCount();
 
     void populateBugsFromFile(const std::string &fileName);
 

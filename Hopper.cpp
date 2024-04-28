@@ -10,6 +10,20 @@ void Hopper::move() {
     std::printf("Hopper: move() called");
 }
 
+bool Hopper::isWayBlocked() {
+    if (facingDirection == direction::NORTH && position.second == 0) {
+        return true;
+    } else if (facingDirection == direction::EAST && position.first == 9) {
+        return true;
+    } else if (facingDirection == direction::SOUTH && position.second == 9) {
+        return true;
+    } else if (facingDirection == direction::WEST && position.first == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 int Hopper::getHopLength() const {
     return hopLength;
 }

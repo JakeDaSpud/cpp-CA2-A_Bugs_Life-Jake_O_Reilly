@@ -5,6 +5,20 @@ void Indecisus::move() {
     std::printf("Indecisus: move() called");
 }
 
+bool Indecisus::isWayBlocked() {
+    if (facingDirection == direction::NORTH && position.second == 0) {
+        return true;
+    } else if (facingDirection == direction::EAST && position.first == 9) {
+        return true;
+    } else if (facingDirection == direction::SOUTH && position.second == 9) {
+        return true;
+    } else if (facingDirection == direction::WEST && position.first == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 int Indecisus::getHopInterval() const {
     return hopInterval;
 }

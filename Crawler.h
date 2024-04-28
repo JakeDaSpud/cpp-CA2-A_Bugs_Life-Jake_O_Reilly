@@ -9,6 +9,7 @@ class Crawler : public Bug {
 
 protected:
     virtual void move();
+    virtual bool isWayBlocked();
 
 public:
     // Constructor

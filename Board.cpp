@@ -55,7 +55,7 @@ void Board::tap() {
     std::cout << "DEBUG: Board::tap()" << std::endl;
 
     for (Bug* bug: allBugs) {
-        std::move(bug);
+        bug->move();
     }
 
     Board::display();
@@ -168,6 +168,35 @@ void Board::populateBugsFromFile(const std::string &fileName) {
 // Run tap() every 1 second
 void Board::runSimulation() {
 
+    // While there's more than 1 bug alive, keep tapping and waiting
+    while (getAliveBugCount() > 1) {
+        tap();
+        sleep(1);
+    }
+
+    Bug *winnerBug;
+
+    // Find winner (last bug alive)
+    for (Bug* currentBug : allBugs) {
+        if (currentBug->getIsAlive()) {
+            winnerBug = currentBug;
+        }
+    }
+
+    // One alive bug is the winner, print them out and leave function.
+    std::cout << "Winner!: " << winnerBug->asString() << std::endl;
+}
+
+int Board::getAliveBugCount() {
+    int result = 0;
+
+    for (Bug* currentBug : allBugs) {
+        if (currentBug->getIsAlive()) {
+            result++;
+        }
+    }
+
+    return result;
 }
 
 // Return all bugs in this board as a list of strings, instead of their Bug objects

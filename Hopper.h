@@ -10,6 +10,7 @@ class Hopper: public Bug {
 protected:
     int hopLength;
     virtual void move();
+    virtual bool isWayBlocked();
 
 public:
     // Constructor: Hopper() initialises a Hopper obj with full @params

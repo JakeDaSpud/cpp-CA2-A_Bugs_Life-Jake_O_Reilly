@@ -12,6 +12,7 @@ protected:
     // Actual timer to 0 of when to do 2-cell movement
     int hopCountdown;
     virtual void move();
+    virtual bool isWayBlocked();
 
 public:
     Indecisus(int id, std::pair<int, int> position, direction direction, int size, int hopInterval): Bug(id, position, direction, size), hopInterval(hopInterval) {

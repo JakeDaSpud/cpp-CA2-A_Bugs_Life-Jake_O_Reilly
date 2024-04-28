@@ -17,10 +17,10 @@ protected:
     int size; // Initially 1-20: if two Bugs fight, one with bigger size wins, and other dies, that dead Bug's size gets added to the winner's
     std::list<std::pair<int, int>> path; // List of position history
 
-    virtual void move() = 0; // Pure virtual function with "= 0", this means Bug class cannot be instantiated
-    bool isWayBlocked() { return false; };
+    virtual bool isWayBlocked() = 0;
 
 public:
+    virtual void move() = 0; // Pure virtual function with "= 0", this means Bug class cannot be instantiated
 
     Bug(int id, const std::pair<int, int> &position, direction facingDirection, int size)
     : id(id), position(position), facingDirection(facingDirection), size(size) {

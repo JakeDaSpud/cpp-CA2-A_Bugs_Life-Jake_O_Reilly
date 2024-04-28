@@ -26,8 +26,7 @@ int main() {
             case '1': {
                 std::cout << "[1]: Initialising Board..." << std::endl;
                 bugBoard.populateBugsFromFile("inputBugs.txt");
-
-                std::cout << std::endl;
+                bugBoard.display();
 
                 break;
             }
@@ -105,7 +104,6 @@ int main() {
                 break;
             }
 
-
             //6. Display all Cells listing their Bugs
             case '6': {
                 std::cout << "[6]: Printing every Cell's state..." << std::endl;
@@ -121,8 +119,12 @@ int main() {
 
             // 7. Run simulation (generates a Tap every second)
             // bugBoard.runSimulation()
+            case '7': {
+                std::cout << "[7]: Running Simulation..." << std::endl;
 
-
+                bugBoard.runSimulation();
+                break;
+            }
 
             // 8. Exit (write Life History of all Bugs to file)
             case '8': {
