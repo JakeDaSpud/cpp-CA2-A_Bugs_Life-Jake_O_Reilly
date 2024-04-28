@@ -9,7 +9,6 @@ int main() {
     //std::cout << "DEBUG: Hello, World! START..." << std::endl;
 
     Board bugBoard;
-    std::vector<Bug*> bugPtrVector;
 
     /*for (auto &item : bugPtrVector) {
         std::cout << "item&: " << item << "\nbyte size: " << sizeof(item) << std::endl;
@@ -122,7 +121,14 @@ int main() {
             case '7': {
                 std::cout << "[7]: Running Simulation..." << std::endl;
 
-                bugBoard.runSimulation();
+                if (!bugBoard.getAllBugs(false).empty()) {
+                    bugBoard.runSimulation();
+                }
+
+                else {
+                    std::cout << "Hey! There's no Bugs in the board, have you initialised it yet? (Try option [1]!)" << std::endl << std::endl;
+                }
+
                 break;
             }
 

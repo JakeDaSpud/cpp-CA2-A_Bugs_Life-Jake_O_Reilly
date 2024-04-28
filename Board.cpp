@@ -8,6 +8,14 @@
 void Board::display() {
     std::cout << std::endl << "Current Board State:" << std::endl;
 
+    // Refresh board to be filled with characters
+    // This is so the previous move's characters won't "ghost" on the display
+    for (int currentColumn = 0; currentColumn < 10; currentColumn++) {
+        for (int currentRow = 0; currentRow < 10; currentRow++) {
+            board[currentColumn][currentRow] = '-';
+        }
+    }
+
     // First update the whole board to show current bug positions
     // Check if there are bugs initialised
     if (!this->allBugs.empty()) {
@@ -52,7 +60,7 @@ void Board::display() {
 }
 
 void Board::tap() {
-    std::cout << "DEBUG: Board::tap()" << std::endl;
+    //std::cout << "DEBUG: Board::tap()" << std::endl;
 
     for (Bug* bug: allBugs) {
         bug->move();
