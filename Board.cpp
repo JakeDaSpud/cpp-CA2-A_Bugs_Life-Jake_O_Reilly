@@ -63,8 +63,12 @@ void Board::tap() {
     //std::cout << "DEBUG: Board::tap()" << std::endl;
 
     for (Bug* bug: allBugs) {
-        bug->move();
+        if (bug->getIsAlive()) {
+            bug->move();
+        }
     }
+
+    fight();
 
     Board::display();
 }
@@ -273,6 +277,101 @@ std::list<std::string> Board::getCellState() {
     }
 
     return cellListOut;
+}
+
+// Find all bugs on the same cell, then make them compare size, biggest adds the loser's size to its own and loser dies
+void Board::fight() {
+
+    std::map<std::pair<int, int>, std::list<Bug*>> cell_bugs_Map;
+
+    // 1. Find all bugs on the same cell
+
+    // This is kind of like Two Sum
+    // Bug doing the comparison, go through all Bugs
+    for (Bug* currentBug : allBugs) {
+
+        // Make sure we're only using alive Bugs
+        if (currentBug->getIsAlive()) {
+
+            // Bug being compared, all Bugs after nextBug, that AREN'T currentBug
+            for (Bug* nextBug : allBugs) {
+
+                // Check if nextBug isn't currentBug, and compare positions
+                if (currentBug != nextBug && currentBug->getPosition() == nextBug->getPosition()) {
+                    std::cout << "DEBUG: Found two bugs on same cell:" << currentBug->asString() << std::endl << " and " << std::endl << nextBug->asString() << std::endl;
+
+                    // IF ENTRY DOESN'T EXIST: Create new entry for the cell-Bugs to the map
+                    if (cell_bugs_Map[currentBug->getPosition()].empty()) {
+                        // Adding the new entry
+                        cell_bugs_Map[currentBug->getPosition()] = std::list<Bug*> {currentBug, nextBug};
+
+                        // Debug printing out the new entry
+                        std::cout << "DEBUG: Made new Map entry for position: " << currentBug->getPosition().first << ", " << currentBug->getPosition().second << std::endl;
+
+                        std::cout << "DEBUG: Bugs at this position:" << std::endl;
+                        for (Bug* bugToPrint: cell_bugs_Map[currentBug->getPosition()]) {
+                            std::cout << bugToPrint->asString() << std::endl;
+                        }
+                    }
+
+                    // Entry already exists, just add nextBug to it
+                    else {
+                        cell_bugs_Map[currentBug->getPosition()].push_back(nextBug);
+                    }
+
+                    // This will remove all other instances of the same Bug in the list
+                    cell_bugs_Map[currentBug->getPosition()].unique();
+                }
+            }
+        }
+    }
+
+    /*std::cout << "DEBUG: Printing unique bugsThatWillFight list:" << std::endl;
+    for (Bug* printBug : bugsThatWillFight) {
+        std::cout << printBug->asString() << std::endl;
+    }*/
+
+    // 2. Find the biggest Bug
+
+    // Iterate every map entry (Cell : Bugs on this Cell)
+    for (auto currentCell = cell_bugs_Map.begin(); currentCell != cell_bugs_Map.end(); currentCell++) {
+
+        // currentCell->second is the std::list<Bug*> that I can iterate through now
+        std::list<Bug*> bugsThatWillFight = currentCell->second;
+
+        // Max size Bug
+        Bug* imTheBiggestBug;
+
+        // Find max size bug
+        for (Bug* currentBug : bugsThatWillFight) {
+
+            // Set new biggest bug
+            if (currentBug->getSize() > imTheBiggestBug->getSize()) {
+                imTheBiggestBug = currentBug;
+            }
+        }
+
+        // 3. Biggest Bug eats / adds size of all other Bugs in cell, and marks them as !isAlive
+        for (Bug* currentBug : bugsThatWillFight) {
+
+            // Set new biggest bug
+            // Fight list must be more than size 1
+            // currentBug can't be imTheBiggestBug
+            // currentBug must be alive
+            if (bugsThatWillFight.size() > 1 && currentBug != imTheBiggestBug && currentBug->getIsAlive()) {
+
+                // Eat / Gain size of the other Bug
+                imTheBiggestBug->setSize(imTheBiggestBug->getSize() + currentBug->getSize());
+
+                // Kill the Bug
+                currentBug->setIsAlive(false);
+
+                // Remove currentBug from fight list
+                bugsThatWillFight.pop_back();
+            }
+        }
+
+    }
 }
 
 // Return all bugs in this board as a list of strings, instead of their Bug objects

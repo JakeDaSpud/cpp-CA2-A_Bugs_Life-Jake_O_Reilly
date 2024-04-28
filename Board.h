@@ -8,6 +8,7 @@
 #include <vector>
 #include "Bug.h"
 #include <unistd.h>
+#include <map>
 
 // The board will:
 // - Be where Bugs are stored (Hoppers, Crawlers, Indecisus)
@@ -77,7 +78,8 @@ public:
     // private
     // @param: Bug *bug1, Bug *bug2
     // Double pointer function to compare
-    // Check location of all Bugs, if they
+    // Check location of all alive Bugs, if there are 2 or more on the same cell, add them to the std::list<Bug*> toFight
+    // Find the max size bug, then take all the other Bug's sizes and add it to its own, flip their bool isAlive to false
     void fight();
 
     // Board.getBugById(int searchId) / Board->getBugById(int searchId)
