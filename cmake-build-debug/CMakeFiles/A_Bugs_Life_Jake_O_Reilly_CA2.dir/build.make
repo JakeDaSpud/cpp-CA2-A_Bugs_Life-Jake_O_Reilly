@@ -211,12 +211,9 @@ A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Board.cpp.obj
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/Indecisus.cpp.obj
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/build.make
-A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-system-s-d.a
-A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-window-s-d.a
-A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-graphics-s-d.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-audio-s-d.a
+A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-graphics-s-d.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-window-s-d.a
-A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libfreetype.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libsfml-system-s-d.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libopenal32.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libvorbisfile.a
@@ -224,6 +221,7 @@ A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libvorbisenc.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libvorbis.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libogg.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libFLAC.a
+A_Bugs_Life_Jake_O_Reilly_CA2.exe: C:/SFML/lib/libfreetype.a
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/linkLibs.rsp
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/objects1.rsp
 A_Bugs_Life_Jake_O_Reilly_CA2.exe: CMakeFiles/A_Bugs_Life_Jake_O_Reilly_CA2.dir/link.txt

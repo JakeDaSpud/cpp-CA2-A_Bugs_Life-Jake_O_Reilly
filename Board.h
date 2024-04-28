@@ -2,6 +2,9 @@
 #ifndef A_BUGS_LIFE_JAKE_O_REILLY_CA2_BOARD_H
 #define A_BUGS_LIFE_JAKE_O_REILLY_CA2_BOARD_H
 
+#include <windows.h>
+#include <SFML/Graphics.hpp>
+#include <vector>
 #include <algorithm>
 #include <list>
 #include <string>
@@ -98,6 +101,8 @@ public:
     void populateBugsFromFile(const std::string &fileName);
 
     void writeGameHistoryToFile();
+
+    void sfmlMode7();
 
     virtual ~Board() {}
 };
