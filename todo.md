@@ -6,9 +6,9 @@
 - [x] Create Plan/Checklist for Project
 - [x] Make Classes
 - [x] Make Menu
-- [ ] Implement all functions
+- [x] Implement all functions
 - [ ] Custom Controllable ```Bug```
-- [ ] New ```Bug``` type's ```move()``` uses int interval, where it moves 2 spaces instead of 1, every interval moves it makes
+- [x] New ```Bug``` type's ```move()``` uses int interval, where it moves 2 spaces instead of 1, every interval moves it makes
 
 ### Classes
 - [x] Plan ```Bug``` Class 
@@ -35,8 +35,8 @@
 - - [x] Menu 1: Initialise board (load ```Bug```s from ```bugs.txt```)
 - - [x] Menu 2: Display all ```Bug```s
 - - [x] Menu 3: Find a ```Bug``` from id
-- - [ ] Menu 4: Tap the board (```moveAll()``` -> ```fight()``` or ```eat()```)
+- - [x] Menu 4: Tap the board (```moveAll()``` -> ```fight()``` or ```eat()```)
 - - [x] Menu 5: Display history of all ```Bug```s (path taken ***AND ACTIONS? ASKKKKKKK***)
 - - [x] Menu 6: Display all cells listing their bugs (i.e "```6-3: Empty``` ```0-5: Crawler 64, Hopper 33```)
-- - [ ] Menu 7: Run simulation (run ```tap()``` every second)
+- - [x] Menu 7: Run simulation (run ```tap()``` every second)
 - - [x] Menu 8: Write current ```Bug``` history to a file, then Exit app 

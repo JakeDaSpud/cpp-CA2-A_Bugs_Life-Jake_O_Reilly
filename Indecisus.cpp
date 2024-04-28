@@ -2,7 +2,7 @@
 #include "Indecisus.h"
 
 void Indecisus::move() {
-    std::printf("Indecisus: move() called");
+    //std::printf("Indecisus: move() called");
 
     // If way is blocked, choose random new direction
     // Seed random using unix time

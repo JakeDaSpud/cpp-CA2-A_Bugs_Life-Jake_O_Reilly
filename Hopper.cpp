@@ -7,7 +7,7 @@ void Hopper::move() {
     // If isWayBlocked true, can't move
     // If can't move full hopLength, moves to edge of board, then choose random direction
     // Add new position to position history
-    std::printf("Hopper: move() called");
+    //std::printf("Hopper: move() called");
 
     // If way is blocked, choose random new direction
     // Seed random using unix time

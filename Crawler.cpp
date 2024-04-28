@@ -7,7 +7,7 @@
     // Moves by 1 in facingDirection
     // If isWayBlocked(), can't move, choose new random direction
     // Add new position to position history
-    std::printf("Crawler: move() called");
+    //std::printf("Crawler: move() called");
 
     // If way is blocked, choose random new direction
     // Seed random using unix time

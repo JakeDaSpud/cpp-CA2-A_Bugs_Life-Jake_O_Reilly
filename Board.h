@@ -107,5 +107,4 @@ public:
     virtual ~Board() {}
 };
 
-
 #endif //A_BUGS_LIFE_JAKE_O_REILLY_CA2_BOARD_H

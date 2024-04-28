@@ -301,7 +301,7 @@ void Board::fight() {
 
                 // Check if nextBug isn't currentBug, and compare positions
                 if (currentBug != nextBug && currentBug->getPosition() == nextBug->getPosition()) {
-                    std::cout << "DEBUG: Found two bugs on same cell:" << currentBug->asString() << std::endl << " and " << std::endl << nextBug->asString() << std::endl;
+                    //std::cout << "DEBUG: Found two bugs on same cell:" << currentBug->asString() << std::endl << " and " << std::endl << nextBug->asString() << std::endl;
 
                     // IF ENTRY DOESN'T EXIST: Create new entry for the cell-Bugs to the map
                     if (cell_bugs_Map[currentBug->getPosition()].empty()) {
@@ -309,12 +309,12 @@ void Board::fight() {
                         cell_bugs_Map[currentBug->getPosition()] = std::list<Bug*> {currentBug, nextBug};
 
                         // Debug printing out the new entry
-                        std::cout << "DEBUG: Made new Map entry for position: " << currentBug->getPosition().first << ", " << currentBug->getPosition().second << std::endl;
+                        //std::cout << "DEBUG: Made new Map entry for position: " << currentBug->getPosition().first << ", " << currentBug->getPosition().second << std::endl;
 
-                        std::cout << "DEBUG: Bugs at this position:" << std::endl;
+                        /*std::cout << "DEBUG: Bugs at this position:" << std::endl;
                         for (Bug* bugToPrint: cell_bugs_Map[currentBug->getPosition()]) {
                             std::cout << bugToPrint->asString() << std::endl;
-                        }
+                        }*/
                     }
 
                     // Entry already exists, just add nextBug to it
@@ -471,19 +471,20 @@ void Board::sfmlMode7() {
 
     srand(time(NULL));
 
-    sf::RenderWindow window(sf::VideoMode(400, 400), "SFML works!");
-    sf::CircleShape character(2.5);
-    character.setPosition(200,390);
-    character.setFillColor(sf::Color::Red);
+    sf::RenderWindow window(sf::VideoMode(1024, 1024), "SFML Jug's Life");
+    sf::CircleShape playerBug(40);
+    playerBug.setPosition(10, 10);
+    playerBug.setFillColor(sf::Color::Red);
     std::vector<sf::RectangleShape> squares;
-    for(int x = 0; x < 80;x ++)
+
+    for (int x = 0; x < 10; x++)
     {
-        for(int y=0; y<80;y++)
+        for (int y = 0; y < 10; y++)
         {
-            sf::RectangleShape cell(sf::Vector2f(5,5));
-            cell.setPosition(x*5, y*5);
-            //cell.setOutlineThickness(1);
-            //cell.setOutlineColor(sf::Color::Black);
+            sf::RectangleShape cell(sf::Vector2f(102.4,102.4));
+            cell.setPosition(x*102.4, y*102.4);
+            cell.setOutlineThickness(1);
+            cell.setOutlineColor(sf::Color::Black);
             squares.push_back(cell);
         }
     }
@@ -495,70 +496,70 @@ void Board::sfmlMode7() {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if(event.type == sf::Event::KeyReleased)
+
+            if (event.type == sf::Event::KeyReleased)
             {
-                int x = character.getPosition().x;
-                int y = character.getPosition().y;
-                if(event.key.code == sf::Keyboard::Up)
+                int x = playerBug.getPosition().x;
+                int y = playerBug.getPosition().y;
+
+                if (event.key.code == sf::Keyboard::Up)
                 {
-                    if(y> 0)
-                        character.setPosition(x, y-5);
+                    if (y > 24)
+                        playerBug.setPosition(x, y - 102);
                 }
-                if(event.key.code == sf::Keyboard::Down)
+
+                if (event.key.code == sf::Keyboard::Down)
                 {
-                    if(y<395 )
-                        character.setPosition(x, y+5);
+                    if (y < 922)
+                        playerBug.setPosition(x, y + 102);
                 }
-                if(event.key.code == sf::Keyboard::Left)
+
+                if (event.key.code == sf::Keyboard::Left)
                 {
-                    if(x> 0)
-                        character.setPosition(x-5, y);
+                    if (x > 24)
+                        playerBug.setPosition(x - 102, y);
                 }
-                if(event.key.code == sf::Keyboard::Right)
+
+                if (event.key.code == sf::Keyboard::Right)
                 {
-                    if(x<395)
-                        character.setPosition(x+5, y);
+                    if (x < 922)
+                        playerBug.setPosition(x + 102, y);
                 }
-                if(event.key.code == sf::Keyboard::Space)
+
+                if (event.key.code == sf::Keyboard::Space)
                 {
-                    for(sf::RectangleShape &sh:squares)
+                    for (sf::RectangleShape &sh:squares)
                     {
-                        if(x == sh.getPosition().x
-                           && y ==sh.getPosition().y )
+                        if (x == sh.getPosition().x && y ==sh.getPosition().y )
                         {
                             sh.setFillColor(sf::Color::Green);
                         }
                     }
                 }
-
-
             }
-            if(event.type == sf::Event::MouseButtonReleased)
+
+            if (event.type == sf::Event::MouseButtonPressed)
             {
                 int x = event.mouseButton.x;
                 int y = event.mouseButton.y;
 
-                for(sf::RectangleShape &sh:squares)
+                for (sf::RectangleShape &sh:squares)
                 {
-                    if(x >= sh.getPosition().x&&x < sh.getPosition().x+10
-                       && y >=sh.getPosition().y&&y < sh.getPosition().y+10 )
+                    if (x >= sh.getPosition().x && x < sh.getPosition().x + 10 && y >= sh.getPosition().y && y < sh.getPosition().y + 10)
                     {
                         sh.setFillColor(sf::Color::Green);
                     }
                 }
             }
-
         }
-
 
         window.clear(sf::Color::White);
         for(sf::RectangleShape sh:squares)
         {
             window.draw(sh);
         }
-        window.draw(character);
+
+        window.draw(playerBug);
         window.display();
-
     }
-
 }

@@ -148,6 +148,7 @@ int main() {
                 std::cout << "[9]: Starting SFML Version..." << std::endl << std::endl;
 
                 // Run the SFML version
+                bugBoard.sfmlMode7();
 
                 break;
             }
