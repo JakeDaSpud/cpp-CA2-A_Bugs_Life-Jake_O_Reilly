@@ -145,6 +145,7 @@ int main() {
 
                 // Initialise board for the SFML
                 bugBoard.populateBugsFromFile("inputBugs.txt");
+                std::cout << "[9]: Starting SFML Version..." << std::endl << std::endl;
 
                 // Run the SFML version
 
