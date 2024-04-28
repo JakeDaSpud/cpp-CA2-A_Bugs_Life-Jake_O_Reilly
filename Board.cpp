@@ -25,24 +25,21 @@ void Board::display() {
             char boardChar = '-';
 
             // Check if bug is alive
-            if (currentBug->getIsAlive()) {
-
-                if (currentBug->getClass() == "Crawler") {
-                    boardChar = 'C';
-                }
-
-                else if (currentBug->getClass() == "Hopper") {
-                    boardChar = 'H';
-                }
-
-                else if (currentBug->getClass() == "Indecisus") {
-                    boardChar = 'I';
-                }
+            if (!currentBug->getIsAlive()) {
+                // Set dead bug character 'x'
+                boardChar = 'x';
             }
 
-            // Set dead bug character 'x'
-            else {
-                boardChar = 'x';
+            else if (currentBug->getClass() == "Crawler") {
+                boardChar = 'C';
+            }
+
+            else if (currentBug->getClass() == "Hopper") {
+                boardChar = 'H';
+            }
+
+            else if (currentBug->getClass() == "Indecisus") {
+                boardChar = 'I';
             }
 
             // Set character on board where that bug is
@@ -180,10 +177,16 @@ void Board::populateBugsFromFile(const std::string &fileName) {
 // Run tap() every 1 second
 void Board::runSimulation() {
 
+    int deltaTime = 0;
+    int boardTurn = 0;
+
     // While there's more than 1 bug alive, keep tapping and waiting
     while (getAliveBugCount() > 1) {
+        boardTurn++;
+        std::cout << "Turn " << boardTurn << std::endl;
+
         tap();
-        sleep(1);
+        sleep(deltaTime);
     }
 
     Bug *winnerBug;
@@ -196,7 +199,7 @@ void Board::runSimulation() {
     }
 
     // One alive bug is the winner, print them out and leave function.
-    std::cout << "Winner!: " << winnerBug->asString() << std::endl;
+    std::cout << "Winner!: " << winnerBug->asString() << std::endl << std::endl;
 }
 
 int Board::getAliveBugCount() {
@@ -363,14 +366,17 @@ void Board::fight() {
                 // Eat / Gain size of the other Bug
                 imTheBiggestBug->setSize(imTheBiggestBug->getSize() + currentBug->getSize());
 
-                // Kill the Bug
+                // Kill the Bug, set eaten by ID
                 currentBug->setIsAlive(false);
+                currentBug->setEatenBy(imTheBiggestBug->getId());
 
                 // Remove currentBug from fight list
                 bugsThatWillFight.pop_back();
             }
-        }
 
+            // Reset for next Cell list
+            bugsThatWillFight.clear();
+        }
     }
 }
 
@@ -389,6 +395,10 @@ std::list<std::string> Board::getAllBugHistories() {
 
             temp += " (" + std::to_string(path.first) + ", ";
             temp += std::to_string(path.second) + ");";
+        }
+
+        if (!currentBug->getIsAlive()) {
+            temp += " Eaten by [" + std::to_string(currentBug->getEatenBy()) + "]";
         }
 
         bugHistoryListOut.push_back(temp);

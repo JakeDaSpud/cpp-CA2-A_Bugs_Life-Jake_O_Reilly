@@ -140,7 +140,18 @@ int main() {
                 break;
             }
 
-            // If the user input isn't 1 - 8
+            // 9. Start SFML Version
+            case '9': {
+
+                // Initialise board for the SFML
+                bugBoard.populateBugsFromFile("inputBugs.txt");
+
+                // Run the SFML version
+
+                break;
+            }
+
+            // If the user input isn't 1 - 9
             default: {
                 std::cout << "Error: Menu option not recognised." << std::endl << std::endl;
 
@@ -164,5 +175,6 @@ void printMenu() {
               << "[6] Display all Board Cell Statuses\n"
               << "[7] Run Simulation\n"
               << "[8] Exit and Save Game History\n"
+              << "[9] Start SFML Version\n"
               << "\nEnter a number to choose an item:" << std::endl;
 }

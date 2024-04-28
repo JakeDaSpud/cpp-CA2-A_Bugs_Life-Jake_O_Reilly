@@ -16,6 +16,7 @@ protected:
     bool isAlive;
     int size; // Initially 1-20: if two Bugs fight, one with bigger size wins, and other dies, that dead Bug's size gets added to the winner's
     std::list<std::pair<int, int>> path; // List of position history
+    int eatenBy;
 
     virtual bool isWayBlocked() = 0;
 
@@ -43,6 +44,8 @@ public:
     void setSize(int size);
     const std::list<std::pair<int, int>> &getPath() const;
     void setPath(const std::list<std::pair<int, int>> &path);
+    int getEatenBy() const;
+    void setEatenBy(int eatenBy);
 
     virtual std::string asString() = 0; // Pure virtual
     virtual std::string getClass() = 0;

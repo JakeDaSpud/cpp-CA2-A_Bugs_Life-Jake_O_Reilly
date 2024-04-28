@@ -42,3 +42,11 @@ const std::list<std::pair<int, int>> &Bug::getPath() const {
 void Bug::setPath(const std::list<std::pair<int, int>> &path) {
     Bug::path = path;
 }
+
+int Bug::getEatenBy() const {
+    return eatenBy;
+}
+
+void Bug::setEatenBy(int eatenBy) {
+    Bug::eatenBy = eatenBy;
+}
