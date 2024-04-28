@@ -177,7 +177,7 @@ void Board::populateBugsFromFile(const std::string &fileName) {
 // Run tap() every 1 second
 void Board::runSimulation() {
 
-    int deltaTime = 0;
+    int deltaTime = 1;
     int boardTurn = 0;
 
     // While there's more than 1 bug alive, keep tapping and waiting
