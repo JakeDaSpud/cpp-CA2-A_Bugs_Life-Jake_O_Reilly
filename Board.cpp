@@ -471,6 +471,7 @@ void Board::sfmlMode7() {
 
     srand(time(NULL));
 
+    // Game setup
     sf::RenderWindow window(sf::VideoMode(1024, 1024), "SFML Jug's Life");
     sf::CircleShape playerBug(40);
     playerBug.setPosition(10, 10);
@@ -506,60 +507,72 @@ void Board::sfmlMode7() {
                 {
                     if (y > 24)
                         playerBug.setPosition(x, y - 102);
+
+                    tap();
                 }
 
                 if (event.key.code == sf::Keyboard::Down)
                 {
                     if (y < 922)
                         playerBug.setPosition(x, y + 102);
+
+                    tap();
                 }
 
                 if (event.key.code == sf::Keyboard::Left)
                 {
                     if (x > 24)
                         playerBug.setPosition(x - 102, y);
+
+                    tap();
                 }
 
                 if (event.key.code == sf::Keyboard::Right)
                 {
                     if (x < 922)
                         playerBug.setPosition(x + 102, y);
-                }
 
-                if (event.key.code == sf::Keyboard::Space)
-                {
-                    for (sf::RectangleShape &sh:squares)
-                    {
-                        if (x == sh.getPosition().x && y ==sh.getPosition().y )
-                        {
-                            sh.setFillColor(sf::Color::Green);
-                        }
-                    }
-                }
-            }
-
-            if (event.type == sf::Event::MouseButtonPressed)
-            {
-                int x = event.mouseButton.x;
-                int y = event.mouseButton.y;
-
-                for (sf::RectangleShape &sh:squares)
-                {
-                    if (x >= sh.getPosition().x && x < sh.getPosition().x + 10 && y >= sh.getPosition().y && y < sh.getPosition().y + 10)
-                    {
-                        sh.setFillColor(sf::Color::Green);
-                    }
+                    tap();
                 }
             }
         }
 
+        // Refresh screen with white
         window.clear(sf::Color::White);
-        for(sf::RectangleShape sh:squares)
+
+        for (sf::RectangleShape sh:squares)
         {
             window.draw(sh);
         }
 
-        window.draw(playerBug);
+        std::list<sf::CircleShape> gameEntitiesToDraw;
+        gameEntitiesToDraw.push_back(playerBug);
+
+        for (Bug* bugToAddToDraw : allBugs) {
+
+            // Enemy Bug Setup
+            sf::CircleShape bugEntity(40);
+
+            // Set colour based on type
+            if (bugToAddToDraw->getClass() == "Crawler" && bugToAddToDraw->getIsAlive()) {
+                bugEntity.setFillColor(sf::Color::Yellow);
+            } else if (bugToAddToDraw->getClass() == "Hopper" && bugToAddToDraw->getIsAlive()) {
+                bugEntity.setFillColor(sf::Color::Blue);
+            } else if (bugToAddToDraw->getClass() == "Indecisus" && bugToAddToDraw->getIsAlive()) {
+                bugEntity.setFillColor(sf::Color::Green);
+            }
+
+            // Set position
+            bugEntity.setPosition((bugToAddToDraw->getPosition().first*102.4) + 10, (bugToAddToDraw->getPosition().second*102.4) + 10);
+
+            gameEntitiesToDraw.push_back(bugEntity);
+        }
+
+        // Drawing all entities to game
+        for (sf::CircleShape gameEntity : gameEntitiesToDraw) {
+            window.draw(gameEntity);
+        }
+
         window.display();
     }
 }
